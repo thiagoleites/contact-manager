@@ -1,0 +1,11 @@
+# NÃO ALTERAR, de uso da ALFASOFT!
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{THE_REQUEST} /_ping [NC]
+
+RewriteRule ^ - [R=200]
+</IfModule>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
