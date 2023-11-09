@@ -1,5 +1,13 @@
 @extends('layouts.main')
+
+@section('title', 'Contacts')
+
 @section('content')
+    @if(session('success'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded relative" role="alert">
+            <p class="text-center text-sm"> {{ session('success') }}</p>
+        </div>
+    @endif
     <ul role="list" class="divide-y divide-gray-100">
         @foreach($arrContacts as $ddContact)
             <li class="flex justify-between gap-x-6 py-5">
@@ -14,24 +22,27 @@
                 </div>
                 <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                     <p class="text-sm leading-6 text-gray-900">Action</p>
-                    {{--                    <p class="mt-1 text-xs leading-5 text-gray-500">Last seen--}}
-                    {{--                        <time datetime="2023-01-23T13:23Z">3h ago</time>--}}
                     <div class="flex gap-1">
                         <p class="text-xs leading-5 text-gray-500">
-                            <a href="#">
+                            <a href="{{ route('contact.edit', ['id' => $ddContact->id]) }}">
                                 Edit
                             </a>
                         </p>
                         <p class="text-xs leading-5 text-gray-500">'
                             <a href="#">
-                                Delete
+                                <form action="{{ route('contact.destroy', ['id' => $ddContact->id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-xs text-red-600">Delete</button>
+                                </form>
                             </a>
                         </p>
                     </div>
-                    {{--                    </p>--}}
                 </div>
             </li>
         @endforeach
     </ul>
+
+    {{ $arrContacts->links('components.paginate')}}
 
 @endsection

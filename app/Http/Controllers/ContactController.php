@@ -15,8 +15,8 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        $arrContacts = Contact::all();
-        return view('contacts.index', compact('arrContacts'));
+        $arrContacts = Contact::query()->orderBy('id', 'ASC')->paginate(10);
+        return view('contacts.mostrar', compact('arrContacts'));
     }
 
     /**
@@ -32,8 +32,7 @@ class ContactController extends Controller
      */
     public function store(StoreContactRequest $request): RedirectResponse
     {
-//        Contact::create($request->validated());
-//        return redirect()->route('contact.index');
+
         Contact::create([
             'name' => $request->input('name'),
             'contact' => $request->input('contact'),
@@ -49,32 +48,49 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contact $contact)
+    public function show($id)
     {
-        //
+        $contact = Contact::query()->find($id);
+        return view('contacts.info', compact('contact'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        //
+        $contact = Contact::query()->find($id);
+        return view('contacts.edit', compact('contact'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContactRequest $request, Contact $contact)
+    public function update(UpdateContactRequest $request, $id)
     {
-        //
+
+
+        Contact::find($id)->update([
+            'name' => $request->input('name'),
+            'contact' => $request->input('contact'),
+            'email' => $request->input('email'),
+            'status' => $request->input('status'),
+        ]);
+        dd($request->all());
+        return redirect()
+            ->route('contact.index')
+            ->with('success', 'Contact updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contact $contact)
+    public function destroy(string $id)
     {
-        //
+        Contact::query()->find($id)->delete();
+
+        return redirect()
+            ->route('contact.index')
+            ->with('success', 'Contact deleted successfully.');
     }
 }

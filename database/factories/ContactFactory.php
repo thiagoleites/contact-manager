@@ -20,6 +20,7 @@ class ContactFactory extends Factory
             'name' => $this->faker->name(),
             'contact' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->safeEmail(),
+            'status' => $this->faker->randomElement(['active', 'inactive']),
         ];
     }
 }

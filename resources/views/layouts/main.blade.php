@@ -8,9 +8,9 @@
     <title>App Name - @yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="min-h-screen">
 <main>
-    <div class="max-w-3xl mx-auto p-5">
+    <div class="max-w-7xl mx-auto p-5 flex items-center justify-center">
         @yield('content')
     </div>
 </main>
