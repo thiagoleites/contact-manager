@@ -21,13 +21,13 @@ Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
 Route::post('/login/do', [AuthController::class, 'attempt'])->name('auth.login.do');
 Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::group(['middleware' => 'auth:sanctum'], function(){
 
-    Route::get('/create', [ContactController::class, 'create'])->name('contact.create');
-    Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/create', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
 
-    Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('contact.edit');
-    Route::put('/update/{id}', [ContactController::class, 'update'])->name('contact.update');
+Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('contact.edit');
+Route::put('/update/{id}', [ContactController::class, 'update'])->name('contact.update');
 
-    Route::delete('/delete/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
-});
+Route::delete('/delete/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
+
