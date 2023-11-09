@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,19 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', [ContactController::class, 'index'])->name('contact.index');
 
+Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
+Route::post('/login/do', [AuthController::class, 'attempt'])->name('auth.login.do');
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::get('/', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::group(['middleware' => 'auth:sanctum'], function(){
 
-Route::get('/show/{id}', [\App\Http\Controllers\ContactController::class, 'show'])->name('contact.show');
+    Route::get('/create', [ContactController::class, 'create'])->name('contact.create');
+    Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
 
-Route::get('/create', [\App\Http\Controllers\ContactController::class, 'create'])->name('contact.create');
-Route::post('/store', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+    Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('contact.edit');
+    Route::put('/update/{id}', [ContactController::class, 'update'])->name('contact.update');
 
-Route::get('/edit/{id}', [\App\Http\Controllers\ContactController::class, 'edit'])->name('contact.edit');
-Route::put('/update/{id}', [\App\Http\Controllers\ContactController::class, 'update'])->name('contact.update');
-
-Route::delete('/delete/{id}', [\App\Http\Controllers\ContactController::class, 'destroy'])->name('contact.destroy');
+    Route::delete('/delete/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+});
