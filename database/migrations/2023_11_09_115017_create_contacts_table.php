@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('contact', 20);
             $table->string('email')->unique();
-//            $table->boolean('status')->default(true);
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

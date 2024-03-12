@@ -12,12 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\Contact::factory(50)->create();
+         \App\Models\Contact::factory(2)->create();
 
          \App\Models\User::factory()->create([
              'name' => 'Test User',
              'email' => 'test@teste.com',
-             'password' => 'pass'
+             'password' => bcrypt('pass')
          ]);
     }
 }
