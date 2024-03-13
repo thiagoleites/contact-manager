@@ -15,6 +15,8 @@
     <div class="max-w-7xl mx-auto p-5 flex items-center justify-center">
         @yield('content')
     </div>
+
+    @include('layouts.footer')
 </main>
 
 </body>

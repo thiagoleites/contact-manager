@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             Session::regenerateToken();
-            return redirect()->route('contact.mostrar');
+            return redirect()->route('contact.index');
         }
 
         return back()
@@ -41,7 +41,7 @@ class AuthController extends Controller
         Auth::logout();
         Session::regenerateToken();
 
-        return redirect()->route('contact.mostrar');
+        return redirect()->route('contact.index');
     }
 
 }

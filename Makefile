@@ -18,3 +18,6 @@ migrate:
 
 populate:
 	@./vendor/bin/sail artisan migrate:fresh --seed
+
+dev:
+	@./vendor/bin/sail npm run dev
