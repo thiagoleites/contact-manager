@@ -16,7 +16,7 @@
             @auth
             <a href="{{ route('contact.create')}}" class="hover:underline me-4 md:me-6">Add new Contact</a>
             @else
-            <a href="{{ route('auth.login') }}" class="hover:underline me-4 md:me-6">Manager Contacts</a>
+            <a href="{{ route('auth.login') }}" class="hover:underline me-4 md:me-6">Manager Contacleacts</a>
             @endauth
         </li>
     </ul>

@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="max-w-md mt-5 flex flex-col justify-between">
-                <p class="text-gray-400 text-center text-sm">Obs: rememember to run the migrations to have the default user.</p>
+                <p class="text-gray-400 text-center text-sm">Obs: Remember to run the migrations to have the default user.</p>
                 <p class="text-sm text-gray-400 dark:text-gray-200">Email: test@teste.com</p>
                 <p class="text-sm text-gray-400 dark:text-gray-200">Pass: pass</p>
             </div>
