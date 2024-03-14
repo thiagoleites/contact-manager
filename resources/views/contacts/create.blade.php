@@ -4,28 +4,25 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center mb-5">Create Contact</h1>
-        <div class="row">
-            <div class="col-md-8 mx-auto">
-
+        <h1 class="text-3xl font-semibold text-center">Create Contact</h1>
+            <div class="max-w-2xl mx-auto mt-10">
+            
                 <form action="{{ route('contact.store') }}" method="post">
                     @csrf
                     <div class="mb-3">
-                        <div class="col">
-                            <label for="name" class="form-label">Name</label>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="" value=""
+                            <label for="name" class="block text-gray-600">Name</label>
+                            <input name="name" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="name" placeholder="Type your name" value=""
                                    >
                             <div class="invalid-feedback">
                                 @error('name')
                                 <span class="text-xs leading-5 text-red-600">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
                     </div>
                     <div class="mb-3">
                         <div class="col">
-                            <label for="contact" class="form-label">Contact</label>
-                            <input name="contact" type="text" class="form-control" id="contact" placeholder=""
+                            <label for="contact" class="block text-gray-600">Contact</label>
+                            <input name="contact" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="contact" placeholder="Type your number"
                                    value="" >
                             <div class="invalid-feedback">
                                 @error('contact')
@@ -36,8 +33,8 @@
                     </div>
                     <div class="mb-3">
                         <div class="col">
-                            <label for="email" class="form-label">Email</label>
-                            <input name="email" type="text" class="form-control" id="email" placeholder="" value=""
+                            <label for="email" class="block text-gray-600">Email</label>
+                            <input name="email" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="email" placeholder="Type your pass" value=""
                                    >
                             <div class="invalid-feedback">
                                 @error('email')
@@ -48,8 +45,8 @@
                     </div>
                     <div class="mb-3">
                         <div class="col">
-                            <label for="status" class="form-label">Status</label>
-                            <select class="form-select" id="status" >
+                            <label for="status" class="block text-gray-600">Status</label>
+                            <select class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="status" >
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
                             </select>
@@ -63,12 +60,12 @@
 
                     <div class="mb-3">
                         <div class="col">
-                            <button class="w-25 btn btn-primary" type="submit">Save</button>
+                            <button class="w-full rounded text-white bg-blue-500 hover:bg-blue-800 transition-all py-2 px-4" type="submit">Save</button>
                         </div>
                     </div>
                 </form>
-
+            
             </div>
-        </div>
+
     </div>
 @endsection

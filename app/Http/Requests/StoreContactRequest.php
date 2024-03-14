@@ -23,10 +23,10 @@ class StoreContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:5', 'max:255'],
-            'contact' => ['required', 'string', 'max:20'],
+            'name' => 'required', 'string', 'min:5', 'max:255',
+            'contact' => 'required', 'string', 'max:20',
             'email' => ['required', 'min:5', 'email', Rule::unique('contacts', 'email')],
-            'status' => ['required', 'boolean'],
+            'status' => 'required!in:active,inactive',
         ];
     }
 

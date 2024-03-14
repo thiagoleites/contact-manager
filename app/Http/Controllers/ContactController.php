@@ -15,8 +15,8 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        $arrContacts = Contact::query()->orderBy('id', 'ASC')->paginate(10);
-        return view('contacts.mostrar', compact('arrContacts'));
+        $arrContacts = Contact::query()->orderBy('id', 'ASC')->paginate(5);
+        return view('contacts.index', compact('arrContacts'));
     }
 
     /**
