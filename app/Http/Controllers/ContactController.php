@@ -76,7 +76,6 @@ class ContactController extends Controller
             'email' => $request->input('email'),
             'status' => $request->input('status'),
         ]);
-        dd($request->all());
         return redirect()
             ->route('contact.index')
             ->with('success', 'Contact updated successfully.');

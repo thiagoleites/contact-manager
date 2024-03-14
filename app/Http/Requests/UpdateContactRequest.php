@@ -25,7 +25,7 @@ class UpdateContactRequest extends FormRequest
             'name' => ['required', 'string', 'min:5', 'max:255'],
             'contact' => ['required', 'string', 'max:20'],
             'email' => ['required', 'min:5', 'email'],
-            'status' => ['required', 'in:active,inactive'],
+            'status' => ['required|in:active,inactive'],
         ];
     }
 
