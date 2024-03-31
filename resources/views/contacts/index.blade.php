@@ -21,13 +21,13 @@
                 <th scope="col" class="px-6 py-3">
                     Email
                 </th>
+                @auth
                 <th scope="col" class="px-6 py-3">
-                    @auth
                      Action
                      @else
 
+                    </th>
                     @endauth
-                </th>
             </tr>
         </thead>
         <tbody>

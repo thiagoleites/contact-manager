@@ -1,5 +1,8 @@
 <!doctype html>
 <html lang="en">
+    @php
+        use Illuminate\Support\Facades\Request;
+    @endphp
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,11 +14,15 @@
 
 </head>
 <body class="min-h-screen">
-<main>
+<main">
     <div class="max-w-7xl mx-auto p-5 flex items-center justify-center">
         @yield('content')
     </div>
-    <p class="absolute  bottom-24 w-full text-center text-gray-400  ">You should be login to manager contacts</p>
+    @guest
+        @if(Request::is('/'))
+            <p class="absolute  bottom-24 w-full text-center text-gray-400  ">You should be login to manager contacts</p>
+        @endif
+    @endguest
     @include('layouts.footer')
 </main>
 
